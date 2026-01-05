@@ -1,21 +1,50 @@
-import { defineType, defineField } from 'sanity'
+// schemas/machine.ts
 
-export default defineType({
+export default {
   name: 'machine',
   title: 'Machine',
   type: 'document',
   fields: [
-    defineField({ name: 'title', title: 'Machine Name', type: 'string', validation: Rule => Rule.required() }),
-    defineField({ name: 'stockNumber', title: 'Stock #', type: 'string', validation: Rule => Rule.required() }),
-    defineField({ name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title', maxLength: 96 }, validation: Rule => Rule.required() }),
-    defineField({ name: 'category', title: 'Category', type: 'reference', to: [{ type: 'category' }], validation: Rule => Rule.required() }),
-    defineField({ name: 'subcategory', title: 'Subcategory', type: 'reference', to: [{ type: 'subcategory' }], validation: Rule => Rule.required() }),
-    defineField({ name: 'brand', title: 'Brand', type: 'string' }),
-    defineField({ name: 'model', title: 'Model', type: 'string' }),
-    defineField({ name: 'year', title: 'Year', type: 'number' }),
-    defineField({ name: 'condition', title: 'Condition', type: 'string' }),
-    defineField({ name: 'specs', title: 'Specifications', type: 'array', of: [{ type: 'string' }] }),
-    defineField({ name: 'images', title: 'Images', type: 'array', of: [{ type: 'image' }] }),
-    defineField({ name: 'status', title: 'Status', type: 'string', options: { list: ['Available', 'Sold'] }, initialValue: 'Available' })
+    {
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+      validation: (Rule: any) => Rule.required()
+    },
+    {
+      name: 'stockNumber',
+      title: 'Stock #',
+      type: 'string',
+      validation: (Rule: any) => Rule.required()
+    },
+    {
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: [{ type: 'category' }],
+      validation: (Rule: any) => Rule.required()
+    },
+    {
+      name: 'subcategory',
+      title: 'Subcategory',
+      type: 'reference',
+      to: [{ type: 'subcategory' }],
+      validation: (Rule: any) => Rule.required()
+    },
+    {
+      name: 'price',
+      title: 'Price',
+      type: 'number'
+    },
+    {
+      name: 'image',
+      title: 'Image',
+      type: 'image'
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'text'
+    }
   ]
-})
+}
