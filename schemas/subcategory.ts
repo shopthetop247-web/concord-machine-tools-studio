@@ -1,29 +1,29 @@
-import { defineType, defineField } from 'sanity'
+// schemas/subcategory.ts
 
-export default defineType({
+export default {
   name: 'subcategory',
   title: 'Subcategory',
   type: 'document',
   fields: [
-    defineField({
-      name: 'title',
-      title: 'Subcategory Name',
+    {
+      name: 'name',
+      title: 'Name',
       type: 'string',
-      validation: Rule => Rule.required()
-    }),
-    defineField({
+      validation: (Rule: any) => Rule.required()
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: { source: 'title', maxLength: 96 },
-      validation: Rule => Rule.required()
-    }),
-    defineField({
-      name: 'category',
+      options: { source: 'name', maxLength: 96 },
+      validation: (Rule: any) => Rule.required()
+    },
+    {
+      name: 'parentCategory',
       title: 'Parent Category',
       type: 'reference',
       to: [{ type: 'category' }],
-      validation: Rule => Rule.required()
-    })
+      validation: (Rule: any) => Rule.required()
+    }
   ]
-})
+}
