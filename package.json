@@ -1,0 +1,15 @@
+{
+  "name": "concord-machine-tools-studio",
+  "private": true,
+  "scripts": {
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "sanity": "^3.35.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
