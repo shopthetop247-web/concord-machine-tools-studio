@@ -1,13 +1,21 @@
 import { defineConfig } from 'sanity'
-import { schemaTypes } from './schemas'
+import { deskTool } from 'sanity/desk'
+import { myStructure } from './schemas/deskStructure'
+import category from './schemas/category'
+import subcategory from './schemas/subcategory'
+import machine from './schemas/machine'
 
 export default defineConfig({
   name: 'concord-machine-tools',
-  title: 'Concord Machine Tools',
-  projectId: 'iwodjd3n', // Replace with your actual Sanity project ID
+  title: 'Concord Machine Tools Studio',
+  projectId: 'iwodjd3n',
   dataset: 'production',
-  basePath: '/studio',
+  plugins: [
+    deskTool({
+      structure: myStructure
+    })
+  ],
   schema: {
-    types: schemaTypes
+    types: [category, subcategory, machine]
   }
 })
