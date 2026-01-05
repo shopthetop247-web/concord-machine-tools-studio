@@ -1,6 +1,5 @@
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
-import { myStructure } from './schemas/deskStructure'
 import category from './schemas/category'
 import subcategory from './schemas/subcategory'
 import machine from './schemas/machine'
@@ -12,10 +11,14 @@ export default defineConfig({
   dataset: 'production',
   plugins: [
     deskTool({
-      structure: myStructure
+      // No external structure-builder needed in v3
+      defaultDocumentNode: (S, { schemaType }) => {
+        // You can customize per type if needed
+        return S.document().views([S.view.form()])
+      }
     })
   ],
   schema: {
-    types: [category, subcategory, machine]
-  }
+    types: [category, subcategory, machine],
+  },
 })
