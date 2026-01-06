@@ -47,6 +47,13 @@ export default {
       options: { hotspot: true } // allows cropping/focusing
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: { source: 'name', maxLength: 96 },
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
       name: 'specifications',
       title: 'Specifications',
       type: 'text'
