@@ -12,6 +12,11 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: 'brand',
+      title: 'Brand',
+      type: 'string',
+    },
+    {
       name: 'stockNumber',
       title: 'Stock #',
       type: 'string',
