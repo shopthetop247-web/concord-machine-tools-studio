@@ -52,6 +52,12 @@ export default {
       options: { hotspot: true } // allows cropping/focusing
     },
     {
+      name: 'videoUrl',
+      title: 'Machine Video (YouTube URL)',
+      type: 'url',
+      description: 'Paste a YouTube link for this machine (optional)',
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
