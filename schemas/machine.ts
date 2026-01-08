@@ -48,9 +48,20 @@ export default {
       name: 'images',
       title: 'Images',
       type: 'array',
-      of: [{ type: 'image' }],
-      options: { hotspot: true } // allows cropping/focusing
-    },
+      of: [{ 
+        type: 'image',
+        options: { hotspot: true },
+        fields: [
+        {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the machine, model, year, and key feature'
+        }
+      ]
+    }
+  ]
+},
     {
       name: 'videoUrl',
       title: 'Machine Video (YouTube URL)',
