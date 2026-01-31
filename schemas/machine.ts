@@ -31,12 +31,6 @@ export default {
         .max(new Date().getFullYear())
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      description: 'Provide a detailed description of the machine, its condition, features, and capabilities for buyers.'
-    },
-    {
       name: 'category',
       title: 'Category',
       type: 'reference',
@@ -85,6 +79,12 @@ export default {
       name: 'specifications',
       title: 'Specifications',
       type: 'text'
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      description: 'Provide a detailed description of the machine, its condition, features, and capabilities for buyers.'
     }
     // Price field removed
   ]
