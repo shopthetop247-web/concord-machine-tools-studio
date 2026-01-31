@@ -31,6 +31,12 @@ export default {
         .max(new Date().getFullYear())
     },
     {
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      description: 'Provide a detailed description of the machine, its condition, features, and capabilities for buyers.'
+    },
+    {
       name: 'category',
       title: 'Category',
       type: 'reference',
