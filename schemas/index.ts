@@ -8,5 +8,6 @@ export const schemaTypes = [
   category,
   subcategory,
   brand,
-  machine
+  machine,
+  post
 ];
