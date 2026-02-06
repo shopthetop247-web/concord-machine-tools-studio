@@ -54,6 +54,13 @@ export default defineType({
     }),
 
     defineField({
+      name: 'author',
+      title: 'Author',
+      type: 'string',
+      initialValue: 'Concord Machine Tools',
+    }),
+
+    defineField({
       name: 'seo',
       title: 'SEO',
       type: 'object',
@@ -64,6 +71,7 @@ export default defineType({
           type: 'string',
           validation: (Rule) => Rule.max(60),
         }),
+        
         defineField({
           name: 'metaDescription',
           title: 'Meta Description',
