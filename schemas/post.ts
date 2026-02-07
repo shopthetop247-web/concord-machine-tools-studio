@@ -47,6 +47,13 @@ export default defineType({
     }),
 
     defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'tag' }] }],
+     }),
+
+    defineField({
       name: 'publishedAt',
       title: 'Published Date',
       type: 'datetime',
