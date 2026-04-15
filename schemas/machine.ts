@@ -59,10 +59,11 @@ export default async function ModelPage({ params }: PageProps) {
     normalize(m.model || '') === modelSlug
   );
 
-  const modelName = filtered[0]?.model || modelSlug.replace(/-/g, ' ');
+  const modelName =
+    filtered[0]?.model || modelSlug.replace(/-/g, ' ');
 
   const modelDescription =
-    filtered.find((m: any) => m.modelDescription?.length)?.modelDescription;
+    filtered.find((m: any) => m.modelDescription)?.modelDescription;
 
   /* -------------------------
      RELATED MODELS
@@ -112,17 +113,20 @@ export default async function ModelPage({ params }: PageProps) {
               ? urlFor(machine.images[0])
               : '/placeholder.jpg';
 
+            const category = machine.category?.slug?.current;
+            const subcategory = machine.subcategory?.slug?.current;
+
             return (
               <Link
                 key={machine._id}
-                href={`/inventory/${machine.category.slug.current}/${machine.subcategory.slug.current}/${machine.slug.current}`}
+                href={`/inventory/${category}/${subcategory}/${machine.slug.current}`}
                 className="block border rounded-lg overflow-hidden hover:shadow-lg transition"
               >
 
                 <div className="h-48 w-full">
                   <img
                     src={imageUrl}
-                    alt={machine.name}
+                    alt={machine.name || `${brandName} ${modelName}`}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -161,11 +165,8 @@ export default async function ModelPage({ params }: PageProps) {
                   {m}
                 </Link>
               );
-            })}
-          </div>
+            }
+           </div>
         </section>
-      )}
-
-    </main>
+      </main>
   );
-}
