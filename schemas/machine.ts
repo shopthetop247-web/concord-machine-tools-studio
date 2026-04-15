@@ -9,65 +9,86 @@ export default {
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: Rule => Rule.required()
+      validation: (Rule: any) => Rule.required(),
     },
+
     {
       name: 'brand',
       title: 'Brand',
       type: 'string',
     },
+
+    // ✅ NEW FIELD: MODEL (KEY SEO UPGRADE)
+    {
+      name: 'model',
+      title: 'Model',
+      type: 'string',
+      description: 'Machine model (e.g. VF-2, ST-20, UMC-750, Integrex i-200)',
+      validation: (Rule: any) =>
+        Rule.optional().warning('Adding a model improves SEO and enables model pages'),
+    },
+
     {
       name: 'stockNumber',
       title: 'Stock #',
       type: 'string',
-      validation: Rule => Rule.required()
+      validation: (Rule: any) => Rule.required(),
     },
+
     {
       name: 'yearOfMfg',
       title: 'Year of Mfg.',
       type: 'number',
-      validation: Rule => Rule.required()
-        .min(1900)
-        .max(new Date().getFullYear())
+      validation: (Rule: any) =>
+        Rule.required()
+          .min(1900)
+          .max(new Date().getFullYear()),
     },
+
     {
       name: 'category',
       title: 'Category',
       type: 'reference',
       to: [{ type: 'category' }],
-      validation: Rule => Rule.required()
+      validation: (Rule: any) => Rule.required(),
     },
+
     {
       name: 'subcategory',
       title: 'Subcategory',
       type: 'reference',
       to: [{ type: 'subcategory' }],
-      validation: Rule => Rule.required()
+      validation: (Rule: any) => Rule.required(),
     },
+
     {
       name: 'images',
       title: 'Images',
       type: 'array',
-      of: [{ 
-        type: 'image',
-        options: { hotspot: true },
-        fields: [
+      of: [
         {
-          name: 'alt',
-          title: 'Alt Text',
-          type: 'string',
-          description: 'Describe the machine, model, year, and key feature'
-        }
-      ]
-    }
-  ]
-},
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+              description:
+                'Describe the machine, model, year, and key feature',
+            },
+          ],
+        },
+      ],
+    },
+
     {
       name: 'videoUrl',
       title: 'Machine Video (YouTube URL)',
       type: 'url',
       description: 'Paste a YouTube link for this machine (optional)',
     },
+
     {
       name: 'slug',
       title: 'Slug',
@@ -75,17 +96,21 @@ export default {
       options: { source: 'name', maxLength: 96 },
       validation: (Rule: any) => Rule.required(),
     },
+
     {
       name: 'specifications',
       title: 'Specifications',
-      type: 'text'
+      type: 'text',
     },
+
     {
       name: 'description',
       title: 'Description',
       type: 'text',
-      description: 'Provide a detailed description of the machine, its condition, features, and capabilities for buyers.'
-    }
+      description:
+        'Provide a detailed description of the machine, its condition, features, and capabilities for buyers.',
+    },
+
     // Price field removed
-  ]
-}
+  ],
+};
