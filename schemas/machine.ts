@@ -72,6 +72,7 @@ export default {
               name: 'alt',
               title: 'Alt Text',
               type: 'string',
+              description: 'Describe the machine, model, year, and key feature',
             },
           ],
         },
@@ -80,8 +81,9 @@ export default {
 
     {
       name: 'videoUrl',
-      title: 'Video URL',
+      title: 'Machine Video (YouTube URL)',
       type: 'url',
+      description: 'Optional YouTube link',
     },
 
     {
@@ -105,6 +107,3 @@ export default {
     },
   ],
 };
-    </main>
-  );
-}
