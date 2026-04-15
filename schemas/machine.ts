@@ -62,8 +62,9 @@ export default async function ModelPage({ params }: PageProps) {
   const modelName =
     filtered[0]?.model || modelSlug.replace(/-/g, ' ');
 
-  const modelDescription =
-    filtered.find((m: any) => m.modelDescription)?.modelDescription;
+  // ✅ FIXED HERE
+  const modelWithDescription = filtered.find((m: any) => m.modelDescription);
+  const modelDescription = modelWithDescription?.modelDescription;
 
   /* -------------------------
      RELATED MODELS
@@ -165,8 +166,11 @@ export default async function ModelPage({ params }: PageProps) {
                   {m}
                 </Link>
               );
-            }
-           </div>
+            })}
+          </div>
         </section>
-      </main>
+      )}
+
+    </main>
   );
+}
