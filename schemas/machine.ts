@@ -39,16 +39,10 @@ export default {
     // ✅ NEW: normalized model slug
     {
       name: 'modelSlug',
-      title: 'Model Slug',
-      type: 'slug',
-      options: {
-        source: 'model',
-        slugify: (input: string) =>
-          input
-            .toLowerCase()
-            .trim()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, ''),
+  title: 'Model Slug',
+  type: 'string',
+  description: 'Normalized model identifier used for grouping (e.g. vf-2, st-20, umc-750)',
+  validation: (Rule: any) => Rule.required(),
       },
     },
 
