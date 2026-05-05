@@ -13,10 +13,20 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
 
+    // ⚠️ KEEP EXISTING (do not remove yet)
     {
       name: 'brand',
-      title: 'Brand',
+      title: 'Brand (Legacy)',
       type: 'string',
+      description: 'Legacy field — will be removed after migration',
+    },
+
+    // ✅ NEW: proper brand reference
+    {
+      name: 'brandRef',
+      title: 'Brand',
+      type: 'reference',
+      to: [{ type: 'brand' }],
     },
 
     {
@@ -24,6 +34,22 @@ export default {
       title: 'Model',
       type: 'string',
       description: 'Example: VF-2, ST-20, UMC-750',
+    },
+
+    // ✅ NEW: normalized model slug
+    {
+      name: 'modelSlug',
+      title: 'Model Slug',
+      type: 'slug',
+      options: {
+        source: 'model',
+        slugify: (input: string) =>
+          input
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, ''),
+      },
     },
 
     {
@@ -90,7 +116,15 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: { source: 'name', maxLength: 96 },
+      options: {
+        source: 'name',
+        slugify: (input: string) =>
+          input
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, ''),
+      },
       validation: (Rule: any) => Rule.required(),
     },
 
